@@ -1,0 +1,5 @@
+graft proman/templates
+graft proman/static
+graft proman/models
+include proman/connectdatabase.py
+include proman/models.py
