@@ -1,13 +1,3 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
-
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
-
-
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -33,65 +23,55 @@ body {
   width: auto;
 }
 
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: black;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: black;
+    background-color: transparent;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
-  margin-bottom: 60px;
+    height: 750px !important;
+    background-color: #C8FF69;
 }
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-}
-
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 500px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
+  height: 750px;
+  background-color: #C8FF69;
 }
 
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
+.carousel-indicators {
+  top: 100px;
 }
 
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+.carousel-control.left {
+  position: fixed;
+  margin-left: -60px;
+  background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
+  background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
 }
 
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
+.carousel-control.right {
+  right: -60px;
+  position: fixed;
+  background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
+  background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -122,13 +102,24 @@ body {
     line-height: 1.4;
   }
 
-  .featurette-heading {
-    font-size: 50px;
-  }
+#red {
+  background-color: #FF0000;
 }
 
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
-  }
+#blue {
+  background-color: #0000FF;
+}
+
+#yellow {
+  background-color: #E2BE22;
+}
+
+#green {
+  background-color: #008800;
+}
+
+.card-status {
+  height: 500px;
+  width: 150px;
+  display: inline-block;
 }
