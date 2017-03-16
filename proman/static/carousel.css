@@ -207,7 +207,7 @@
 }
 .board {
     display: inline-block;
-    background: lightgray;
+    background: #1C1C1C;
     margin: 20px;
     height: 25%;
     width: 25%;
@@ -224,7 +224,10 @@
     text-align: center;
 }
 a {
-    color: black;
+    color: white;
 }
 
+body {
+    background-color: #CFCFCF;
+}
 /*boardlist end*/
