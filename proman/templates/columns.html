@@ -1,26 +1,38 @@
  {% extends "index.html" %} {% block columns %}
-<div class=card-status id="to-do">
-    <div class=movable-header id="hdr">
-        <h4>To Do</h4>
+
+<div class="status-container">
+    <div id="todo" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>To Do</label><br><br>
+        <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
+        <div class="card" id="drag2" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
     </div>
-    <div class=clmn-content id="cont"></div>
-</div>
-<div class=card-status id="in-progress">
-    <div class=movable-header id="hdr">
-        <h4>In progress</h4>
+    <div id="inprogress" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>In progress</label><br><br>
+        <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
     </div>
-    <div class=clmn-content id="cont"></div>
-</div>
-<div class=card-status id="done">
-    <div class=movable-header id="hdr">
-        <h4>Done</h4>
+    <div id="inreview" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>Review</label><br><br>
     </div>
-    <div class=clmn-content id="cont"></div>
-</div>
-<div class=card-status id="review">
-    <div class=movable-header id="hdr">
-        <h4>Review</h4>
+    <div id="done" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>Done</label><br><br>
     </div>
-    <div class=clmn-content id="cont"></div>
 </div>
 {% endblock %}
