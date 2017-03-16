@@ -37,13 +37,12 @@ def close_db(error):
 
 @app.route('/')
 def display_homepage():
+    return render_template("boardlist.html")
+
+
+@app.route('/detailed_view')
+def detailed_view():
     return render_template("columns.html")
-
-
-@app.route('/new_board')
-def new_board():
-
-    redirect(url_for('display_homepage'))
 
 
 if __name__ == '__main__':
