@@ -40,23 +40,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Project name</a>
+              <a class="navbar-brand" href="#">ProMan</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
+              <li class="active"><a href="#">Add new board</a></li>
             </ul>
           </div>
         </div>
@@ -71,6 +59,7 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
+      <!-- FROM -->
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -79,34 +68,28 @@
       <div class="item active">
         <div class="container">
           <div class="carousel-caption">
-            <h1>First board</h1>
-            <a href="{{ url_for('display_columns') }}">Display</a> {% block columns %}
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-            {% endblock %}
+            <h1>Board 1</h1>
+            {% block columns %} {% endblock %}
           </div>
         </div>
       </div>
       <div class="item">
         <div class="container">
           <div class="carousel-caption">
-            <h1>Second board</h1>
+            <h1>Board 2</h1>
+            {{ self.columns() }}
           </div>
         </div>
       </div>
       <div class="item">
         <div class="container">
           <div class="carousel-caption">
-            <h1>Third board</h1>
+            <h1>Board 3</h1>
+            {{ self.columns() }}
           </div>
         </div>
       </div>
+      <!-- TO -->
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

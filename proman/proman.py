@@ -2,7 +2,6 @@ import os
 from peewee import *
 from connectdatabase import ConnectDatabase
 from models import *
-from build import *
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash, current_app
 
@@ -10,20 +9,16 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'cc_online.db'),
+    DATABASE=os.path.join(app.root_path, 'proman.db'),
     SECRET_KEY='Sm9obiBTY2hyb20ga2lja3MgYXNz'))
 
 
 def init_db():
     ConnectDatabase.db.connect()
-    ConnectDatabase.db.drop_tables([Applicant, School, City, Mentor, InterviewSlot,
-                                    Interview, Question, Email], True, True)
-    ConnectDatabase.db.create_tables([Applicant, School, City, Mentor, InterviewSlot,
-                                      Interview, Question, Email], safe=True)
-
-
-def build_db():
-    Build.initialize_data()
+    # ConnectDatabase.db.drop_tables([Applicant, School, City, Mentor, InterviewSlot,
+    #                                 Interview, Question, Email], True, True)
+    # ConnectDatabase.db.create_tables([Applicant, School, City, Mentor, InterviewSlot,
+    #                                   Interview, Question, Email], safe=True)
 
 
 @app.cli.command('initdb')
@@ -42,12 +37,13 @@ def close_db(error):
 
 @app.route('/')
 def display_homepage():
-    return render_template("index.html")
-
-
-@app.route('/columns')
-def display_columns():
     return render_template("columns.html")
+
+
+@app.route('/new_board')
+def new_board():
+
+    redirect(url_for('display_homepage'))
 
 
 if __name__ == '__main__':
