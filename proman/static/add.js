@@ -13,8 +13,8 @@ $(document).ready(function () {
         var createDiv = document.createElement("div")
         var findCard = document.getElementById("cardLoc")
         var addDiv = findCard.appendChild(createDiv)
-        $(addDiv).addClass("cards")
-        $(".cards").draggable({
+        $(addDiv).addClass(".card")
+        $(".card").draggable({
 
         });
     })

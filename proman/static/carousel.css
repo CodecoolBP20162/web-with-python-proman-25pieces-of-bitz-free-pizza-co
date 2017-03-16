@@ -39,20 +39,25 @@
 -------------------------------------------------- */
 
 /* Carousel base class */
+#myCarousel {
+    padding-top: 20px;
+}
 .carousel {
-    height: 750px !important;
+    height: 100% !important;
     background-color: #C8FF69;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-    height: 750px;
+    min-height: 750px;
+    height: auto;
     background-color: #C8FF69;
 }
 
 .carousel-indicators {
-    top: 100px;
+    top: 17px;
     position: relative;
+    z-index: 999;
 }
 
 .carousel-control.left {
@@ -97,16 +102,19 @@
   }
 
   .carousel-caption {
-    right: 1%;
-    left: 1%;
-    padding-bottom: 30px;
+    right: 10%;
+    left: 10%;
+  }
+
+  .carousel-caption h1 {
+
+    margin-top: 300px;
   }
 
     /* The navbar becomes detached from the top, so we round the corners */
     .navbar-wrapper .navbar {
         border-radius: 4px;
     }
-
 }
 
 #to-do {
@@ -124,16 +132,17 @@
 #review {
   background-color: #008800;
 }
+
 .columnframe {
     background-color: limegreen;
-    display: inline-block;
     position: relative;
 }
 
 .column {
-  height: 600px;
+  max-height: 600px;
   width: 250px;
-  display: inline-block;
+  display: inline-table;
+  overflow: scroll;
 }
 .column .movable-header {
   height: 40px;
@@ -144,19 +153,19 @@
 }
 .column .clmn-content {
   height: 505px;
-  width: 200px;
+  width: 220px;
   display: inline-block;
   background-color: grey;
   padding-top: 10px;
+  overflow: scroll;
 }
 
 .card {
     background-color: yellow;
     padding: 5px;
-    min-width: 100px;
-    width: 100%;
+    min-width: 80px;
+    width: 80%;
     margin-bottom: 5px;
-
 }
 
 .card_content {
