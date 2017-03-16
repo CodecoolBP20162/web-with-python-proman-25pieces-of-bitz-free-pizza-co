@@ -17,8 +17,5 @@ $(document).ready(function () {
         $(".cards").draggable({
 
         });
-
     })
-
-
 });
