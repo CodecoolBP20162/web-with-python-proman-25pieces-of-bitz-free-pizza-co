@@ -1,17 +1,30 @@
 $(document).ready(function () {
-    $('.column .movable-header').mouseenter(function () {
+    $('.column').mouseenter(function () {
         $(this).animate({
-            height: '+=10px',
-            width: '+=5px'
+            opacity: 1,
+            width: '+=12px'
         }, "fast");
     });
-    $('.column .movable-header').mouseleave(function () {
+    $('.column').mouseleave(function () {
         $(this).animate({
-            height: '-=10px',
-            width: '-=5px'
+            opacity: 0.5,
+            width: '-=12px'
+        }, "fast");
+    });
+    $('.card').mouseenter(function () {
+        $(this).animate({
+            width: '+=20px'
+        }, "fast");
+    });
+    $('.card').mouseleave(function () {
+        $(this).animate({
+            width: '-=20px'
         }, "fast");
     });
 });
+
+
+
 
 
 $(function () {

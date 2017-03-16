@@ -49,7 +49,6 @@
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-    min-height: 750px;
     height: auto;
     background-color: #C8FF69;
 }
@@ -101,14 +100,22 @@
     border-radius: 4px;
   }
 
+  .carousel-inner .container {
+      margin: 0 auto;
+  }
+
   .carousel-caption {
-    right: 10%;
-    left: 10%;
+    padding: 20px;
+    right: 12%;
+    left: 4%;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
   }
 
   .carousel-caption h1 {
 
-    margin-top: 300px;
+    margin-top: 50px;
   }
 
     /* The navbar becomes detached from the top, so we round the corners */
@@ -119,23 +126,22 @@
 
 #to-do {
   background-color: #FF0000;
+  opacity: 0.4;
 }
 
 #in-progress {
   background-color: #0000FF;
+  opacity: 0.4;
 }
 
 #done {
   background-color: #E2BE22;
+  opacity: 0.4;
 }
 
 #review {
   background-color: #008800;
-}
-
-.columnframe {
-    background-color: limegreen;
-    position: relative;
+  opacity: 0.4;
 }
 
 .column {
@@ -148,23 +154,20 @@
   height: 40px;
   width: 100px;
   display: inline-block;
-  background-color: black;
   padding-bottom: 20px;
 }
 .column .clmn-content {
   height: 505px;
   width: 220px;
   display: inline-block;
-  background-color: grey;
   padding-top: 10px;
-  overflow: scroll;
 }
 
 .card {
     background-color: yellow;
     padding: 5px;
     min-width: 80px;
-    width: 80%;
+    width: 180px;
     margin-bottom: 5px;
 }
 
