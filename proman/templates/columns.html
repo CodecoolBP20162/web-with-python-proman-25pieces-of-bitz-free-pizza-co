@@ -1,6 +1,40 @@
  {% extends "index.html" %} {% block columns %}
-<div class=card-status id="red"></div>
-<div class=card-status id="blue"></div>
-<div class=card-status id="yellow"></div>
-<div class=card-status id="green"></div>
+<div class="status-container">
+    <div id="status-field">
+        <div id="todo" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <label>New</label><br><br>
+            <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
+            <div class="card" id="drag2" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
+        </div>
+        <div id="inprogress" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <label>In progress</label><br><br>
+            <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
+        </div>
+        <div id="inreview" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <label>Review</label><br><br>
+        </div>
+        <div id="done" class="status-field" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <label>Done</label><br><br>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
