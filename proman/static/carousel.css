@@ -107,7 +107,49 @@
         border-radius: 4px;
     }
 
-/*status fields*/
+}
+
+#to-do {
+  background-color: #FF0000;
+}
+
+#in-progress {
+  background-color: #0000FF;
+}
+
+#done {
+  background-color: #E2BE22;
+}
+
+#review {
+  background-color: #008800;
+}
+.columnframe {
+    background-color: limegreen;
+    display: inline-block;
+    position: relative;
+}
+
+.column {
+  height: 600px;
+  width: 250px;
+  display: inline-block;
+}
+.column .movable-header {
+  height: 40px;
+  width: 100px;
+  display: inline-block;
+  background-color: black;
+  padding-bottom: 20px;
+}
+.column .clmn-content {
+  height: 505px;
+  width: 200px;
+  display: inline-block;
+  background-color: grey;
+  padding-top: 10px;
+}
+
 .card {
     background-color: yellow;
     padding: 5px;
@@ -134,53 +176,3 @@
     width: 100%;
     height: 25px;
 }
-
-.clicked {
-    opacity: 1.0;
-}
-
-.status-container {
-    width: 80%;
-    height: 80%;
-    margin: 0 auto;
-}
-
-.status-field {
-    width: 25%;
-    height: 600px;
-    overflow: auto;
-    float: left;
-    color: black;
-    font-family: Ruda;
-    padding: 10px;
-    border: 1px solid #aaaaaa;
-    margin-top: 25px;
-}
-
-#todo {
-    background-color: greenyellow;
-}
-
-#inprogress {
-    background-color: lightblue;
-}
-
-#done {
-    background-color: darkseagreen;
-}
-
-#inreview {
-    background-color: chocolate;
-}
-
-label {
-    font-size: 1.5em;
-    color: black;
-    border-bottom: 1px solid darkslategray;
-    width: 100%;
-    float: right;
-    padding-bottom: 3px;
-    text-align: left;
-}
-
-/*status fields end   background-image: -webkit-linear-gradient(#FFD194, #BC1324);*/
