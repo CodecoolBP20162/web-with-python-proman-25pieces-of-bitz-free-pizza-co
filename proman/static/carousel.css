@@ -197,12 +197,12 @@
 }
 .board {
     display: inline-block;
-    background-color: lightblue;
+    background: lightgray;
     margin: 20px;
     height: 25%;
     width: 25%;
     font-size: 2em;
-    color: darkslateblue;
+    color: black;
     border-radius: 15px;
     text-align: center;
     overflow: hidden;
@@ -212,6 +212,9 @@
 }
 .boardlist h1 {
     text-align: center;
+}
+a {
+    color: black;
 }
 
 /*boardlist end*/
