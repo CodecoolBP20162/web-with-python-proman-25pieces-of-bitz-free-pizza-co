@@ -42,7 +42,7 @@ def close_db(error):
 
 @app.route('/')
 def display_homepage():
-    return render_template("index.html")
+    return render_template("form.html")
 
 
 if __name__ == '__main__':
