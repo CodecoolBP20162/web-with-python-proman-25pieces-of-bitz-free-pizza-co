@@ -1,0 +1,110 @@
+ {% extends "index.html" %} {% block columns %}
+<div class=column id="to-do">
+    <div class=movable-header id="hdr">
+        <h4>To Do</h4>
+    </div>
+    <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" id="cardContent1" placeholder="Card Content"></textarea>
+                <button class="submit_content" onclick="saveData('#cardContent1')">Save</button>
+            </article>
+        </div>
+        <div class="card" id="drag2" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" id="cardContent2" placeholder="Card Content"></textarea>
+                <button class="submit_content" onclick="saveData('#cardContent2')">Save</button>
+            </article>
+        </div>
+        <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" id="cardContent3" placeholder="Card Content"></textarea>
+                <button class="submit_content" onclick="saveData('#cardContent3')">Save</button>
+            </article>
+        </div>
+        <div class="card" id="drag4" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" id="cardContent4" placeholder="Card Content"></textarea>
+                <button class="submit_content" onclick="saveData('#cardContent4')">Save</button>
+            </article>
+        </div>
+        <div class="card" id="drag5" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" id="cardContent5" placeholder="Card Content"></textarea>
+                <button class="submit_content" onclick="saveData('#cardContent5')">Save</button>
+            </article>
+        </div>
+    </div>
+</div>
+<div class=column id="in-progress">
+    <div class=movable-header id="hdr">
+        <h4>In progress</h4>
+    </div>
+    <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class=column id="done">
+    <div class=movable-header id="hdr">
+        <h4>Done</h4>
+    </div>
+    <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class=column id="review">
+    <div class=movable-header id="hdr">
+        <h4>Review</h4>
+    </div>
+    <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+<!--<div class="column">
+    <div id="todo" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="status-container header">
+            <h2>To Do</h2>
+        </div>
+        <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
+        <div class="card" id="drag2" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
+    </div>
+    <div id="inprogress" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>In progress</label><br><br>
+        <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
+            <header><input class="card_title" placeholder="Card Title"></header>
+            <br>
+            <article class="card_text">
+                <textarea class="card_content" placeholder="Card Content"></textarea>
+            </article>
+        </div>
+    </div>
+    <div id="inreview" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>Review</label><br><br>
+    </div>
+    <div id="done" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <label>Done</label><br><br>
+    </div>
+</div>-->
