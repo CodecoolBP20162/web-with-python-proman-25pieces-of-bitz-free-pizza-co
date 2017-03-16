@@ -4,7 +4,7 @@
         <div class=movable-header id="hdr">
             <h4>To Do</h4>
         </div>
-        <div class=clmn-content id="cont" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
             <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
                 <header><input class="card_title" placeholder="Card Title"></header>
                 <br>
@@ -19,25 +19,46 @@
                     <textarea class="card_content" placeholder="Card Content"></textarea>
                 </article>
             </div>
+            <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
+            <div class="card" id="drag4" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
+            <div class="card" id="drag5" draggable="true" ondragstart="drag(event)">
+                <header><input class="card_title" placeholder="Card Title"></header>
+                <br>
+                <article class="card_text">
+                    <textarea class="card_content" placeholder="Card Content"></textarea>
+                </article>
+            </div>
         </div>
     </div>
     <div class=column id="in-progress">
         <div class=movable-header id="hdr">
             <h4>In progress</h4>
         </div>
-        <div class=clmn-content id="cont" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
     <div class=column id="done">
         <div class=movable-header id="hdr">
             <h4>Done</h4>
         </div>
-        <div class=clmn-content id="cont" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
     <div class=column id="review">
         <div class=movable-header id="hdr">
             <h4>Review</h4>
         </div>
-        <div class=clmn-content id="cont" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
 </div>
 {% endblock %}
