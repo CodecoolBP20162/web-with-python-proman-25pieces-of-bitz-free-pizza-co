@@ -44,13 +44,13 @@
 }
 .carousel {
     height: 100% !important;
-    background-color: #C8FF69;
+    background-color: #CFCFCF;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
     height: auto;
-    background-color: #C8FF69;
+    background-color: #CFCFCF
 }
 
 .carousel-indicators {
@@ -114,8 +114,8 @@
   }
 
   .carousel-caption h1 {
-
     margin-top: 50px;
+    color: black;
   }
 
     /* The navbar becomes detached from the top, so we round the corners */
@@ -125,23 +125,23 @@
 }
 
 #to-do {
-  background-color: #FF0000;
-  opacity: 0.4;
+  background-color: #F23636;
+  opacity: 0.5;
 }
 
 #in-progress {
-  background-color: #0000FF;
-  opacity: 0.4;
+  background-color: #8297F8;
+  opacity: 0.5;
 }
 
 #done {
-  background-color: #E2BE22;
-  opacity: 0.4;
+  background-color: #FFF471;
+  opacity: 0.5;
 }
 
 #review {
-  background-color: #008800;
-  opacity: 0.4;
+  background-color: #8DFF71;
+  opacity: 0.5;
 }
 
 .column {
@@ -149,6 +149,7 @@
   width: 250px;
   display: inline-table;
   overflow: scroll;
+  padding-bottom: 10px;
 }
 .column .movable-header {
   height: 40px;
@@ -158,17 +159,23 @@
 }
 .column .clmn-content {
   height: 505px;
-  width: 220px;
-  display: inline-block;
+  width: 240px;
+  display: inline-table;
   padding-top: 10px;
 }
 
 .card {
-    background-color: yellow;
+    background-color: #292929;
     padding: 5px;
     min-width: 80px;
     width: 180px;
     margin-bottom: 5px;
+    display: inline-block;
+    border-radius: 5%;
+}
+.card button {
+    color: black;
+
 }
 
 .card_content {
