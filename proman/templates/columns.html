@@ -1,6 +1,26 @@
  {% extends "index.html" %} {% block columns %}
-<div class=card-status id="red"></div>
-<div class=card-status id="blue"></div>
-<div class=card-status id="yellow"></div>
-<div class=card-status id="green"></div>
+<div class=card-status id="to-do">
+    <div class=movable-header id="hdr">
+        <h4>To Do</h4>
+    </div>
+    <div class=clmn-content id="cont"></div>
+</div>
+<div class=card-status id="in-progress">
+    <div class=movable-header id="hdr">
+        <h4>In progress</h4>
+    </div>
+    <div class=clmn-content id="cont"></div>
+</div>
+<div class=card-status id="done">
+    <div class=movable-header id="hdr">
+        <h4>Done</h4>
+    </div>
+    <div class=clmn-content id="cont"></div>
+</div>
+<div class=card-status id="review">
+    <div class=movable-header id="hdr">
+        <h4>Review</h4>
+    </div>
+    <div class=clmn-content id="cont"></div>
+</div>
 {% endblock %}
