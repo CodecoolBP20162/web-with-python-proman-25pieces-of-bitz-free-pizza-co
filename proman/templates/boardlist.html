@@ -21,7 +21,6 @@
   <!-- Carousel template -->
   <link href="static/carousel.css" rel="stylesheet">
   <!--need to convert this ref to static asap-->
-  <script type="text/javascript" src="../static/main.js"></script>
   <script type="text/javascript" src="../static/boards.js"></script>
 </head>
 <!-- NAVBAR
@@ -44,7 +43,7 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Add new board</a></li>
+              <li class="add_new_board"><a href="#">Add new board</a></li>
             </ul>
           </div>
         </div>
@@ -55,16 +54,14 @@
   <div class="boardlist">
     <h1>My boards</h1>
     <div class="board">
-      <a href="/detailed_view">
         <p>Board 1</p>
-      </a>
     </div>
-    <div class="board">
-      <a href="/detailed_view">
+    <a href="/detailed_view">
+      <div class="board">
         <p>Board 2</p>
-      </a>
-    </div>
-    <div class="board">
+      </div>
+    </a>
+      <div class="board">
       <a href="/detailed_view">
         <p>Board 3</p>
       </a>
