@@ -5,23 +5,28 @@
     </div>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
         <div class="add_new_card"><a href="#" onclick="addNewCard('#to-do')">Add new card</a></div>
-        <div class="card" id="drag0" draggable="true" ondragstart="drag(event)">
-            <header><input class="card_title" placeholder="Card Title"></header>
-            <br>
-            <article class="card_text">
-                <textarea class="card_content" id="cardContent1" placeholder="Card Content"></textarea>
-                <button class="submit_content" onclick="saveData('#cardContent1')">Save</button>
-            </article>
+        {% for card in new %}
+        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button button id="{{ card.id }}"
+                    class='submit_content'>Save</button></article>
         </div>
+        {% endfor %}
     </div>
-
 </div>
 <div class=column id="in-progress">
     <div class=movable-header id="hdr">
         <h4>In progress</h4>
     </div>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div class="add_new_card"><a href="#" onclick="addNewCard('#in-progress')">Add new card</a></div>
+        <div class="add_new_card"><a href="#" onclick="addNewCard('#in-progress')">Add new card</a></div>
+        {% for card in in_progress %}
+        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button id="{{ card.id }}"
+                    class='submit_content'>Save</button></article>
+        </div>
+        {% endfor %}
     </div>
 </div>
 <div class=column id="done">
@@ -29,7 +34,14 @@
         <h4>Done</h4>
     </div>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div class="add_new_card"><a href="#" onclick="addNewCard('#done')">Add new card</a></div>
+        <div class="add_new_card"><a href="#" onclick="addNewCard('#done')">Add new card</a></div>
+        {% for card in done %}
+        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button id="{{ card.id }}"
+                    class='submit_content'>Save</button></article>
+        </div>
+        {% endfor %}
     </div>
 </div>
 <div class=column id="review">
@@ -38,6 +50,13 @@
     </div>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
         <div class="add_new_card"><a href="#" onclick="addNewCard('#review')">Add new card</a></div>
+        {% for card in review %}
+        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button id="{{ card.id }}"
+                    class='submit_content'>Save</button></article>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
