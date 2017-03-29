@@ -21,7 +21,7 @@ $(document).ready(function () {
             width: '-=60px'
         }, "fast");
     });
-    // saving stuff, yo
+    // saving card content
     $(".submit_content").click(function (event) {
         var button = $(event.target);
         var card_id = $(button).attr("id");
@@ -34,7 +34,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    // end of saving card content
 
 
 
@@ -57,12 +57,24 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
+// new card
+var cards = {};
+var numberOfCards = cards.length;
 
-var num = 0;
 
 function addNewCard(column) {
 
-    num += 1;
-    var cardId = "drag" + num;
+    numberOfCards += 1
+    var cardId = "card" + numberOfCards;
     $(column + ' .clmn-content').append("<div class='card' id=" + cardId + " draggable='true' ondragstart='drag(event)'><header><input class='card_title' placeholder='Card Title'></header><br><article class='card_text'><textarea class='card_content' id='cardContent1' placeholder='Card Content'></textarea><button class='submit_content'>Save</button></article></div>");
+    // var card_position has to be implemented
+    var assigned_board = 1;
+    var card_status = column.replace("#", "")
+    console.log(card_status)
+    $.ajax({
+        url: "/new/" + card_status + "/" + assigned_board, success: function (data) {
+            console.log(data);
+        }
+    });
 };
+// end of new card

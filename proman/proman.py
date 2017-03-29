@@ -51,6 +51,17 @@ def update_card(card_id, card_title, card_textarea):
     return jsonify(card_title, card_textarea)
 
 
+@app.route("/new/<card_status>/<assigned_board>")
+def new_card(card_status, assigned_board):
+    new_card = Card.create(title=None,
+                           content=None,
+                           status=card_status,
+                           position=0,
+                           assigned_board=assigned_board)
+
+    return jsonify("", "")
+
+
 if __name__ == '__main__':
     current_state = state.StateInit(state.DatabaseSQL)
     # current_state.change_state(state.DarabaseLocalStorage)
