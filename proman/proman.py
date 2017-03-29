@@ -4,7 +4,7 @@ from build import Build
 from peewee import *
 from models import *
 from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash, current_app
+    render_template, flash, current_app, jsonify
 
 
 app = Flask(__name__)
@@ -35,7 +35,20 @@ def display_homepage():
 
 @app.route('/detailed_view')
 def detailed_view():
-    return render_template("columns.html")
+    new = Card.select().where(Card.status == "new")
+    in_progress = Card.select().where(Card.status == "in_progress")
+    done = Card.select().where(Card.status == "done")
+    review = Card.select().where(Card.status == "review")
+    return render_template("columns.html", new=new, in_progress=in_progress, done=done, review=review)
+
+
+@app.route("/update/<card_id>/<card_title>/<card_textarea>")
+def update_card(card_id, card_title, card_textarea):
+    updated_card = Card.update(title=card_title,
+                               content=card_textarea).where(Card.id == card_id)
+    updated_card.execute()
+
+    return jsonify(card_title, card_textarea)
 
 
 if __name__ == '__main__':

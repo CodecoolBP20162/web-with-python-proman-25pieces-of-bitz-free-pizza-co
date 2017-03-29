@@ -21,12 +21,18 @@ $(document).ready(function () {
             width: '-=60px'
         }, "fast");
     });
-    $(function () {
-        document.getElementById("cardContent1").innerHTML = localStorage.getItem("#cardContent1");
-        document.getElementById("cardContent2").innerHTML = localStorage.getItem("#cardContent2");
-        document.getElementById("cardContent3").innerHTML = localStorage.getItem("#cardContent3");
-        document.getElementById("cardContent4").innerHTML = localStorage.getItem("#cardContent4");
-        document.getElementById("cardContent5").innerHTML = localStorage.getItem("#cardContent5");
+    // saving stuff, yo
+    $(".submit_content").click(function (event) {
+        var button = $(event.target);
+        var card_id = $(button).attr("id");
+        var card_title = $(button).parent().parent().find("input").val();
+        var card_textarea = $(button).parent().parent().find("textarea").val();
+        console.log(card_textarea);
+        $.ajax({
+            url: "/update/" + card_id + "/" + card_title + "/" + card_textarea, success: function (data) {
+                console.log(data);
+            }
+        });
     });
 
 
@@ -54,9 +60,9 @@ function drop(ev) {
 
 var num = 0;
 
-    function addNewCard(column){
+function addNewCard(column) {
 
-        num+=1;
-        var cardId = "drag" + num;
-        $(column+' .clmn-content').append("<div class='card' id="+cardId+" draggable='true' ondragstart='drag(event)'><header><input class='card_title' placeholder='Card Title'></header><br><article class='card_text'><textarea class='card_content' id='cardContent1' placeholder='Card Content'></textarea><button class='submit_content'>Save</button> </article> </div>");
-    };
+    num += 1;
+    var cardId = "drag" + num;
+    $(column + ' .clmn-content').append("<div class='card' id=" + cardId + " draggable='true' ondragstart='drag(event)'><header><input class='card_title' placeholder='Card Title'></header><br><article class='card_text'><textarea class='card_content' id='cardContent1' placeholder='Card Content'></textarea><button class='submit_content'>Save</button></article></div>");
+};

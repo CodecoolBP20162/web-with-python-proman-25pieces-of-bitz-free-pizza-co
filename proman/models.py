@@ -14,8 +14,8 @@ class Board(BaseModel):
 
 
 class Card(BaseModel):
-    title = CharField()
-    content = CharField()
+    title = CharField(null=True)
+    content = CharField(null=True)
     status = CharField()
+    position = IntegerField()
     assigned_board = ForeignKeyField(Board)
-    position = CharField()
