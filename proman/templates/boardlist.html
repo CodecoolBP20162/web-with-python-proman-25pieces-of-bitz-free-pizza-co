@@ -34,12 +34,12 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
               aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">ProMan</a>
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+            <a class="navbar-brand" href="#">ProMan</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -52,13 +52,20 @@
     </div>
   </div>
   <div class="boardlist">
-    <a href="/detailed_view"><h1>My boards</h1></a>
+    <a href="/detailed_view">
+      <h1>My boards</h1>
+    </a>
+    {% for board in board_names_from_db %}
+    <div class="board">
+      <p class="board-name" contenteditable="true" id='{{ board.id }}'>{{ board.board_name }}</p>
+      <button id="{{ board.id }}" class='submit_content_board'>Save</button>
+    </div>
+    {% endfor %}
     <!--boards come here-->
   </div>
-    <ul id="boards"></ul>
 
   <!-- Bootstrap core JavaScript
-    ================================================== -->
+   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
