@@ -19,9 +19,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Carousel template -->
-  <link href="static/carousel.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='carousel.css') }}" rel="stylesheet">
   <!--need to convert this ref to static asap-->
-  <script type="text/javascript" src="../static/boards.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='boards.js') }}"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- NAVBAR
@@ -54,13 +54,13 @@
   </div>
   <div class="boardlist">
     <div>
-    <h1>My boards</h1>
+      <h1>My boards</h1>
     </div>
     {% for board in board_names_from_db %}
     <div class="board">
       <p class="board-name" contenteditable="true" id='{{ board.id }}'>{{ board.board_name }}</p>
       <button id="{{ board.id }}" class='submit_content_board'>Save</button>
-      <a class="get_in_board" href="/detailed_view"><i class='fa fa-sign-in fa-lg'></i></a>
+      <a class="get_in_board" href="{{ url_for('detailed_view', board_id=board.id) }}"><i class='fa fa-sign-in fa-lg'></i></a>
     </div>
     {% endfor %}
     <!--boards come here-->

@@ -255,6 +255,7 @@ body {
     background-color: #CFCFCF;
     background-image: url("http://2.bp.blogspot.com/-xmjmQzG1SE8/VC2L9UZNYbI/AAAAAAAAikU/QGO0KFnjANk/s1600/Abstract%2BTriangles%2BWallpapers%2B2.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .add_new_card {

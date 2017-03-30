@@ -41,7 +41,6 @@ $(document).ready(function () {
     // saving card content
     $container.delegate('.submit_content', 'click', function (event) {
         var button = $(event.target);
-        console.log(button)
         var card_id = $(button).attr("id");
         console.log(card_id)
         var card_title = $(button).parent().parent().find("input").val();
@@ -74,10 +73,12 @@ function getHighestId() {
 function addNewCard(column) {
     highest_id += 1
     console.log(highest_id)
+    console.log(column)
     var card_id = "card" + highest_id;
     $(column + ' .clmn-content').append("<div class='card' status='to-do' id=" + card_id + " draggable='true' ondragstart='drag(event)'><header><input class='card_title' placeholder='Card Title'></header><br><article class='card_text'><textarea class='card_content' id='cardContent1' placeholder='Card Content'></textarea><button id=" + highest_id + " class='submit_content'>Save</button><a id=delete" + highest_id + " class='delete_card'><i class='w3-margin-right fa fa-trash fa-2x pull-right'></i></a></article></div>");
     // var card_position has to be implemented
-    var assigned_board = 1;
+    var assigned_board = board_id;
+    console.log(assigned_board)
     var card_status = "to-do";
     console.log(card_status)
     $.ajax({

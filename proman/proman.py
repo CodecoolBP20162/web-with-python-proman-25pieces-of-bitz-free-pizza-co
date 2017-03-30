@@ -40,8 +40,9 @@ def update_board(board_id, newname):
     return jsonify(newname)
 
 
-@app.route('/detailed_view')
-def detailed_view():
+@app.route('/detailed_view/<board_id>')
+def detailed_view(board_id):
+
     new1 = Card.select().where(Card.status == "to-do", Card.assigned_board == 1)
     in_progress1 = Card.select().where(Card.status == "in_progress", Card.assigned_board == 1)
     done1 = Card.select().where(Card.status == "done", Card.assigned_board == 1)
@@ -57,7 +58,20 @@ def detailed_view():
     done3 = Card.select().where(Card.status == "done", Card.assigned_board == 3)
     review3 = Card.select().where(Card.status == "review", Card.assigned_board == 3)
 
-    return render_template("index.html", new1=new1, new2=new2, new3=new3, in_progress1=in_progress1,
+    if board_id == "1":
+        board = ["active", "", ""]
+        board_order = [[new1, in_progress1, done1, review1], [
+            new2, in_progress2, done2, review2], [new3, in_progress3, done3, review3]]
+    elif board_id == "2":
+        board = ["", "active", ""]
+        board_order = [[new2, in_progress2, done2, review2], [
+            new3, in_progress3, done3, review3], [new1, in_progress1, done1, review1]]
+    elif board_id == "3":
+        board = ["", "", "active"]
+        board_order = [[new3, in_progress3, done3, review3], [
+            new1, in_progress1, done1, review1], [new2, in_progress2, done2, review2]]
+
+    return render_template("index.html", board=board, board_order=board_order, new1=new1, new2=new2, new3=new3, in_progress1=in_progress1,
                            in_progress2=in_progress2, in_progress3=in_progress3, done1=done1, done2=done2, done3=done3,
                            review1=review1, review2=review2, review3=review3)
 
