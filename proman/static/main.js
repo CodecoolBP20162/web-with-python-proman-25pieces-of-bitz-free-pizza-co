@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var $container = $('.clmn-content')
     $('.column').mouseenter(function () {
         $(this).animate({
             opacity: 1,
@@ -11,15 +12,17 @@ $(document).ready(function () {
             width: '-=12px'
         }, "fast");
     });
-    $('.card').mouseenter(function () {
+    $container.delegate('.card', 'mouseenter', function () {
         $(this).animate({
             width: '+=60px'
         }, "fast");
+        $(this).find(".submit_content").fadeIn();
     });
-    $('.card').mouseleave(function () {
+    $container.delegate('.card', 'mouseleave', function () {
         $(this).animate({
             width: '-=60px'
         }, "fast");
+        $(this).find(".submit_content").fadeOut(100);
     });
     // saving stuff, yo
     $(".submit_content").click(function (event) {
