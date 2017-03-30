@@ -29,22 +29,15 @@ def close_db(error):
 
 @app.route('/')
 def display_homepage():
-    return render_template("boardlist.html")
+    board_names_from_db = Board.select().where(Board.id > 0)
+    return render_template("boardlist.html", board_names_from_db=board_names_from_db)
 
 
-#@app.route('/')
-# def display_homepage():
-#    board_names_from_db = []
-#    for i in Board.select():
-#        board_names_from_db.append(Board.name)
-#    return render_template("boardlist.html", board_names_from_db=board_names_from_db)'''
-
-
-#@app.route('/update_board/<board_id>')
-# def update_board(board_id,newname):
-#    updated_board = Board.update(board_name=newname).where(Board.id == board_id)
-#    updated_board.execute()
-#    return jsonify(newname)
+@app.route('/update_board/<board_id>/<newname>')
+def update_board(board_id, newname):
+    updated_board = Board.update(board_name=newname).where(Board.id == board_id)
+    updated_board.execute()
+    return jsonify(newname)
 
 
 @app.route('/detailed_view')
