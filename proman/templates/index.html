@@ -59,6 +59,10 @@
     {% endfor %}
   </div>
 </div>
+{%- endmacro %} {% macro render_indicators(first, second, third) -%}
+<li data-target="#myCarousel" data-slide-to="0" class="{{ first }}"></li>
+<li data-target="#myCarousel" data-slide-to="1" class="{{ second }}"></li>
+<li data-target="#myCarousel" data-slide-to="2" class="{{ third }}"></li>
 {%- endmacro %}
 
 <!DOCTYPE html>
@@ -82,11 +86,11 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Carousel template -->
-  <link href="static/carousel.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='carousel.css') }}" rel="stylesheet">
   <!--need to convert this ref to static asap-->
-  <script type="text/javascript" src="../static/main.js"></script>
-  <script type="text/javascript" src="../static/boards.js"></script>
-  <script type="text/javascript" src="../static/add.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='boards.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -126,9 +130,7 @@
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <!-- FROM -->
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+      {{ render_indicators(board[0], board[1], board[2]) }}
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="item active">
@@ -174,7 +176,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
-                                                      window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+                                       window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
   </script>
 </body>
 
