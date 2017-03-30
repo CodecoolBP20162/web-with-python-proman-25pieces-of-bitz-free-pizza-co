@@ -42,11 +42,24 @@ def update_board(board_id, newname):
 
 @app.route('/detailed_view')
 def detailed_view():
-    new = Card.select().where(Card.status == "to-do")
-    in_progress = Card.select().where(Card.status == "in_progress")
-    done = Card.select().where(Card.status == "done")
-    review = Card.select().where(Card.status == "review")
-    return render_template("columns.html", new=new, in_progress=in_progress, done=done, review=review)
+    new1 = Card.select().where(Card.status == "to-do", Card.assigned_board == 1)
+    in_progress1 = Card.select().where(Card.status == "in_progress", Card.assigned_board == 1)
+    done1 = Card.select().where(Card.status == "done", Card.assigned_board == 1)
+    review1 = Card.select().where(Card.status == "review", Card.assigned_board == 1)
+
+    new2 = Card.select().where(Card.status == "to-do", Card.assigned_board == 2)
+    in_progress2 = Card.select().where(Card.status == "in_progress", Card.assigned_board == 2)
+    done2 = Card.select().where(Card.status == "done", Card.assigned_board == 2)
+    review2 = Card.select().where(Card.status == "review", Card.assigned_board == 2)
+
+    new3 = Card.select().where(Card.status == "to-do", Card.assigned_board == 3)
+    in_progress3 = Card.select().where(Card.status == "in_progress", Card.assigned_board == 3)
+    done3 = Card.select().where(Card.status == "done", Card.assigned_board == 3)
+    review3 = Card.select().where(Card.status == "review", Card.assigned_board == 3)
+
+    return render_template("index.html", new1=new1, new2=new2, new3=new3, in_progress1=in_progress1,
+                           in_progress2=in_progress2, in_progress3=in_progress3, done1=done1, done2=done2, done3=done3,
+                           review1=review1, review2=review2, review3=review3)
 
 
 @app.route("/highest_id/<assigned_board>")
