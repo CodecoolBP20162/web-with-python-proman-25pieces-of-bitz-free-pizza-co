@@ -224,7 +224,7 @@
     opacity: 0.7;
 }
 
-.board p {
+.board .board-name {
     margin: 20px;
 }
 

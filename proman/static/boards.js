@@ -1,10 +1,8 @@
 $(document).ready(function() {
-
-    $('.board').click(function(){
-       $(this).fadeOut('500');
-    });
-
+    var num = 0;
     $('.add_new_board').click(function(){
-        $('.boardlist').append('<div class="board"><p>New Board</p></div>');
+        num++;
+        boardId = 'board'+num;
+        $('.boardlist').append('<div class="board"><p class="board-name" contenteditable="true" id='+boardId+'>Board '+num+'</p></div>');
     });
 });

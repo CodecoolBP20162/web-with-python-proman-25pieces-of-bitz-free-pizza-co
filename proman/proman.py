@@ -33,6 +33,21 @@ def display_homepage():
     return render_template("boardlist.html")
 
 
+#@app.route('/')
+#def display_homepage():
+#    board_names_from_db = []
+#    for i in Board.select():
+#        board_names_from_db.append(Board.name)
+#    return render_template("boardlist.html", board_names_from_db=board_names_from_db)'''
+
+
+#@app.route('/update_board/<board_id>')
+#def update_board(board_id,newname):
+#    updated_board = Board.update(board_name=newname).where(Board.id == board_id)
+#    updated_board.execute()
+#    return jsonify(newname)
+
+
 @app.route('/detailed_view')
 def detailed_view():
     new = Card.select().where(Card.status == "new")
@@ -60,6 +75,14 @@ def new_card(card_status, assigned_board):
                            assigned_board=assigned_board)
 
     return jsonify("", "")
+
+  
+@app.route("/update/<card_id>/<card_position>/<card_status>/<card_assigned_board_id>")
+def update_card_position(card_id,card_position,card_status,card_assigned_board_id):
+    updated_card = Card.update(position=card_position, status=card_status, assigned_board_id=card_assigned_board_id).where(Card.id == card_id)
+    updated_card.execute()
+
+    return jsonify(card_position, card_status, card_assigned_board_id)
 
 
 if __name__ == '__main__':

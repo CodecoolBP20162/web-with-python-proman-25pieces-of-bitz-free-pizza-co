@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var $container = $('.clmn-content')
     $('.column').mouseenter(function () {
         $(this).animate({
             opacity: 1,
@@ -11,12 +12,12 @@ $(document).ready(function () {
             width: '-=12px'
         }, "fast");
     });
-    $('.card').mouseenter(function () {
+    $container.delegate('.card', 'mouseenter', function () {
         $(this).animate({
             width: '+=60px'
         }, "fast");
     });
-    $('.card').mouseleave(function () {
+    $container.delegate('.card', 'mouseleave', function () {
         $(this).animate({
             width: '-=60px'
         }, "fast");
@@ -41,7 +42,7 @@ $(document).ready(function () {
 });
 
 $(function () {
-    $(".column .clmn-content").sortable();
+    $(".column .clmn-content").sortable();/*setting colum for draggable elements*/
     $(".column .clmn-content").disableSelection();
 });
 function allowDrop(ev) {
@@ -49,13 +50,13 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.id); /*on drag, saving essential data to identify the html element that are being moved*/
 }
 
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    ev.target.appendChild(document.getElementById(data)); /*on drop, appending the element identified with the data*/
 }
 // new card
 var cards = {};
