@@ -1,27 +1,22 @@
 {% extends "index.html" %} {% block columns %}
 <div class=column id="to-do">
-    <div class=movable-header id="hdr">
-        <h4>To Do</h4>
-    </div>
+    <h4>To Do</h4>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="add_new_card"><a href="#" onclick="addNewCard('#to-do')">Add new card</a></div>
         {% for card in new %}
-        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)' ondragover="allowDrop(event)">
-            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
-            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button button id="{{ card.id }}"
-                    class='submit_content'>Save</button></article>
+        <div class='card' boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+                <button id="{{ card.id }}" class='submit_content'>Save</button>
+            </article>
         </div>
         {% endfor %}
     </div>
 </div>
-<div class=column id="in-progress">
-    <div class=movable-header>
-        <h4>In progress</h4>
-    </div>
+<div class=column id="in_progress">
+    <h4>In progress</h4>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="add_new_card"><a href="#" onclick="addNewCard('#in_progress')">Add new card</a></div>
         {% for card in in_progress %}
-        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+        <div class='card' boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
             <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
             <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
                 <button id="{{ card.id }}" class='submit_content'>Save</button>
@@ -31,76 +26,29 @@
     </div>
 </div>
 <div class=column id="done">
-    <div class=movable-header>
-        <h4>Done</h4>
-    </div>
+    <h4>Done</h4>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="add_new_card"><a href="#" onclick="addNewCard('#done')">Add new card</a></div>
         {% for card in done %}
-        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
-            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
-            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button id="{{ card.id }}"
-                    class='submit_content'>Save</button></article>
+        <div class='card' boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+                <button id="{{ card.id }}" class='submit_content'>Save</button>
+            </article>
         </div>
         {% endfor %}
     </div>
 </div>
 <div class=column id="review">
-    <div class=movable-header>
-        <h4>Review</h4>
-    </div>
+    <h4>Review</h4>
     <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="add_new_card"><a href="#" onclick="addNewCard('#review')">Add new card</a></div>
         {% for card in review %}
-        <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
-            <header><input id="cardTitle{{ card.id }}" class='card_title' value="{{ card.title }}"></header><br>
-            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content'>{{ card.content }}</textarea><button id="{{ card.id }}"
-                    class='submit_content'>Save</button></article>
+        <div class='card' boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
+            <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+            <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+                <button id="{{ card.id }}" class='submit_content'>Save</button>
+            </article>
         </div>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
-
-
-
-
-
-
-<!--<div class="column">
-    <div id="todo" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="status-container header">
-            <h2>To Do</h2>
-        </div>
-        <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
-            <header><input class="card_title" placeholder="Card Title"></header>
-            <br>
-            <article class="card_text">
-                <textarea class="card_content" placeholder="Card Content"></textarea>
-            </article>
-        </div>
-        <div class="card" id="drag2" draggable="true" ondragstart="drag(event)">
-            <header><input class="card_title" placeholder="Card Title"></header>
-            <br>
-            <article class="card_text">
-                <textarea class="card_content" placeholder="Card Content"></textarea>
-            </article>
-        </div>
-    </div>
-    <div id="inprogress" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <label>In progress</label><br><br>
-        <div class="card" id="drag3" draggable="true" ondragstart="drag(event)">
-            <header><input class="card_title" placeholder="Card Title"></header>
-            <br>
-            <article class="card_text">
-                <textarea class="card_content" placeholder="Card Content"></textarea>
-            </article>
-        </div>
-    </div>
-    <div id="inreview" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <label>Review</label><br><br>
-    </div>
-    <div id="done" class="column clmn-content" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <label>Done</label><br><br>
-    </div>
-</div>-->
