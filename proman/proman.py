@@ -34,7 +34,7 @@ def display_homepage():
 
 
 #@app.route('/')
-#def display_homepage():
+# def display_homepage():
 #    board_names_from_db = []
 #    for i in Board.select():
 #        board_names_from_db.append(Board.name)
@@ -42,7 +42,7 @@ def display_homepage():
 
 
 #@app.route('/update_board/<board_id>')
-#def update_board(board_id,newname):
+# def update_board(board_id,newname):
 #    updated_board = Board.update(board_name=newname).where(Board.id == board_id)
 #    updated_board.execute()
 #    return jsonify(newname)
@@ -50,20 +50,11 @@ def display_homepage():
 
 @app.route('/detailed_view')
 def detailed_view():
-    new = Card.select().where(Card.status == "new")
+    new = Card.select().where(Card.status == "to-do")
     in_progress = Card.select().where(Card.status == "in_progress")
     done = Card.select().where(Card.status == "done")
     review = Card.select().where(Card.status == "review")
     return render_template("columns.html", new=new, in_progress=in_progress, done=done, review=review)
-
-
-@app.route("/update/<card_id>/<card_title>/<card_textarea>")
-def update_card(card_id, card_title, card_textarea):
-    updated_card = Card.update(title=card_title,
-                               content=card_textarea).where(Card.id == card_id)
-    updated_card.execute()
-
-    return jsonify(card_title, card_textarea)
 
 
 @app.route("/new/<card_status>/<assigned_board>")
@@ -76,13 +67,22 @@ def new_card(card_status, assigned_board):
 
     return jsonify("", "")
 
-  
-@app.route("/update/<card_id>/<card_position>/<card_status>/<card_assigned_board_id>")
-def update_card_position(card_id,card_position,card_status,card_assigned_board_id):
-    updated_card = Card.update(position=card_position, status=card_status, assigned_board_id=card_assigned_board_id).where(Card.id == card_id)
+
+@app.route("/update/<card_id>/<card_title>/<card_textarea>")
+def update_card(card_id, card_title, card_textarea):
+    updated_card = Card.update(title=card_title,
+                               content=card_textarea).where(Card.id == card_id)
     updated_card.execute()
 
-    return jsonify(card_position, card_status, card_assigned_board_id)
+    return jsonify(card_title, card_textarea)
+
+
+@app.route("/update/<card_id>/<board_id>/<card_status>/<card_position>")
+def update_card_position(card_id, board_id, card_status, card_position):
+    updated_card = Card.update(position=card_position, status=card_status).where(Card.id == card_id)
+    updated_card.execute()
+
+    return jsonify(card_position, card_status, board_id)
 
 
 if __name__ == '__main__':

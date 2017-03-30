@@ -12,7 +12,7 @@ class Build():
 
         card1 = Card.create(title='első',
                             content="blabla",
-                            status="new",
+                            status="to-do",
                             position=0,
                             assigned_board=1)
         card2 = Card.create(title='második',
@@ -27,7 +27,7 @@ class Build():
                             assigned_board=1)
         card4 = Card.create(title='negyedik',
                             content="ezaz",
-                            status="new",
+                            status="to-do",
                             position=0,
                             assigned_board=1)
         card5 = Card.create(title='ötödik',

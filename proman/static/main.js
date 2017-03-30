@@ -36,15 +36,27 @@ $(document).ready(function () {
         });
     });
     // end of saving card content
-
-
-
+    // update card status and position
+    function updateStatus(column) {
+        var pos = 0;
+        $(column).children(".card").each(function () {
+            var card_id = $(this).attr("id").replace("card", "");
+            console.log(card_id)
+            var board_id = $(this).attr('boardId');
+            var card_title = $(this).find("input").val();
+            console.log(card_title)
+            var card_content = $(this).find("textarea").val();
+            console.log(card_content)
+            var card_status = column.replace('#', '');
+            position++;
+            $.ajax({
+                url: "/" + card_id + "/" + board_id + "/" + card_status + "/" + position
+            });
+        });
+    }
+    // end of update card status and position
 });
 
-$(function () {
-    $(".column .clmn-content").sortable();/*setting colum for draggable elements*/
-    $(".column .clmn-content").disableSelection();
-});
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -53,11 +65,18 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id); /*on drag, saving essential data to identify the html element that are being moved*/
 }
 
+
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data)); /*on drop, appending the element identified with the data*/
-}
+    console.log("megtörtént a drop")
+    updateStatus("#to-do");
+    console.log("megtörtént az első update")
+    updateStatus("#in_progress");
+    updateStatus("#done");
+    updateStatus("#review");
+};
 // new card
 var cards = {};
 var numberOfCards = cards.length;
