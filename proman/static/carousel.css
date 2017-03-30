@@ -258,4 +258,7 @@ body {
     border-radius: 5%;
 }
 
+.delete_card {
+    display: None;
+}
 /*boardlist end*/

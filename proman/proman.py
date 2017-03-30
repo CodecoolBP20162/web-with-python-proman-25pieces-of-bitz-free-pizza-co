@@ -6,7 +6,6 @@ from models import *
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash, current_app, jsonify
 
-
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(
@@ -57,15 +56,25 @@ def detailed_view():
     return render_template("columns.html", new=new, in_progress=in_progress, done=done, review=review)
 
 
-@app.route("/new/<card_status>/<assigned_board>")
-def new_card(card_status, assigned_board):
+@app.route("/highest_id/<assigned_board>")
+def get_highest_id(assigned_board):
+    board = Board.select(Board.highest_id).where(Board.id == assigned_board).get()
+
+    return jsonify(board.highest_id)
+
+
+@app.route("/new/<card_id>/<card_status>/<assigned_board>")
+def new_card(card_id, card_status, assigned_board):
     new_card = Card.create(title=None,
                            content=None,
                            status=card_status,
                            position=0,
                            assigned_board=assigned_board)
+    id = card_id.replace("card", "")
+    board = Board.update(highest_id=int(id)).where(Board.id == assigned_board)
+    board.execute()
 
-    return jsonify("", "")
+    return jsonify("card added successfully")
 
 
 @app.route("/update/<card_id>/<card_title>/<card_textarea>/<card_status>")
@@ -84,6 +93,14 @@ def update_card_position(card_id, board_id, card_status):
     updated_card.execute()
 
     return jsonify(card_status, board_id)
+
+
+@app.route("/delete/<card_id>")
+def delete(card_id):
+    delete_card = Card.delete().where(Card.id == card_id)
+    delete_card.execute()
+
+    return jsonify("successfully deleted card")
 
 
 if __name__ == '__main__':
