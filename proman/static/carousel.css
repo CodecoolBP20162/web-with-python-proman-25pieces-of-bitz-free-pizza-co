@@ -199,6 +199,10 @@
     height: 25px;
 }
 
+.submit_content {
+    display: none;
+}
+
 /*boardlist*/
 .boardlist {
     position: absolute;
@@ -253,6 +257,5 @@ body {
     display: inline-block;
     border-radius: 5%;
 }
-
 
 /*boardlist end*/

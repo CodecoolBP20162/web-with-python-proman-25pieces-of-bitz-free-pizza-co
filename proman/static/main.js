@@ -16,11 +16,13 @@ $(document).ready(function () {
         $(this).animate({
             width: '+=60px'
         }, "fast");
+        $(this).find(".submit_content").fadeIn();
     });
     $container.delegate('.card', 'mouseleave', function () {
         $(this).animate({
             width: '-=60px'
         }, "fast");
+        $(this).find(".submit_content").fadeOut(100);
     });
     // saving card content
     $(".submit_content").click(function (event) {
