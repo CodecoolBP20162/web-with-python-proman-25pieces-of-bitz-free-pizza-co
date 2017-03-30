@@ -68,21 +68,22 @@ def new_card(card_status, assigned_board):
     return jsonify("", "")
 
 
-@app.route("/update/<card_id>/<card_title>/<card_textarea>")
-def update_card(card_id, card_title, card_textarea):
+@app.route("/update/<card_id>/<card_title>/<card_textarea>/<card_status>")
+def update_card(card_id, card_title, card_textarea, card_status):
     updated_card = Card.update(title=card_title,
-                               content=card_textarea).where(Card.id == card_id)
+                               content=card_textarea,
+                               status=card_status).where(Card.id == card_id)
     updated_card.execute()
 
     return jsonify(card_title, card_textarea)
 
 
-@app.route("/update/<card_id>/<board_id>/<card_status>/<card_position>")
-def update_card_position(card_id, board_id, card_status, card_position):
-    updated_card = Card.update(position=card_position, status=card_status).where(Card.id == card_id)
+@app.route("/update_card_position/<card_id>/<board_id>/<card_status>")
+def update_card_position(card_id, board_id, card_status):
+    updated_card = Card.update(status=card_status).where(Card.id == card_id)
     updated_card.execute()
 
-    return jsonify(card_position, card_status, board_id)
+    return jsonify(card_status, board_id)
 
 
 if __name__ == '__main__':
