@@ -30,15 +30,8 @@ def close_db(error):
 
 @app.route('/')
 def display_homepage():
-    return render_template("boardlist.html")
-
-
-#@app.route('/')
-# def display_homepage():
-#    board_names_from_db = []
-#    for i in Board.select():
-#        board_names_from_db.append(Board.name)
-#    return render_template("boardlist.html", board_names_from_db=board_names_from_db)'''
+    board_names_from_db = Board.select().where(Board.id > 0)
+    return render_template("boardlist.html", board_names_from_db=board_names_from_db)
 
 
 #@app.route('/update_board/<board_id>')

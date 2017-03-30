@@ -53,9 +53,11 @@
   </div>
   <div class="boardlist">
     <a href="/detailed_view"><h1>My boards</h1></a>
-    <!--boards come here-->
+      {% for board in board_names_from_db %}
+        <div class="board"><p class="board-name" contenteditable="true" id='+boardId+'>{{ board.board_name }}</p></div>
+      {% endfor %}
+      <!--boards come here-->
   </div>
-    <ul id="boards"></ul>
 
   <!-- Bootstrap core JavaScript
     ================================================== -->
