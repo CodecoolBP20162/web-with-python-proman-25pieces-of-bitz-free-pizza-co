@@ -66,12 +66,24 @@ def update_card(card_id, card_title, card_textarea):
     return jsonify(card_title, card_textarea)
 
 
+@app.route("/new/<card_status>/<assigned_board>")
+def new_card(card_status, assigned_board):
+    new_card = Card.create(title=None,
+                           content=None,
+                           status=card_status,
+                           position=0,
+                           assigned_board=assigned_board)
+
+    return jsonify("", "")
+
+  
 @app.route("/update/<card_id>/<card_position>/<card_status>/<card_assigned_board_id>")
 def update_card_position(card_id,card_position,card_status,card_assigned_board_id):
     updated_card = Card.update(position=card_position, status=card_status, assigned_board_id=card_assigned_board_id).where(Card.id == card_id)
     updated_card.execute()
 
     return jsonify(card_position, card_status, card_assigned_board_id)
+
 
 if __name__ == '__main__':
     current_state = state.StateInit(state.DatabaseSQL)
