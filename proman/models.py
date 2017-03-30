@@ -11,6 +11,7 @@ class BaseModel(Model):
 
 class Board(BaseModel):
     board_name = CharField()
+    highest_id = IntegerField(default=0)
 
 
 class Card(BaseModel):
