@@ -9,5 +9,14 @@ class BaseModel(Model):
         database = ConnectDatabase.db
 
 
-class School(BaseModel):
-    pass
+class Board(BaseModel):
+    board_name = CharField()
+    highest_id = IntegerField(default=0)
+
+
+class Card(BaseModel):
+    title = CharField(null=True)
+    content = CharField(null=True)
+    status = CharField()
+    position = IntegerField()
+    assigned_board = ForeignKeyField(Board)

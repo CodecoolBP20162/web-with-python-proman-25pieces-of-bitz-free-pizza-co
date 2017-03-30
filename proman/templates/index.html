@@ -1,3 +1,70 @@
+{% macro render_board(new, in_progress, done, review) -%}
+<div class=column id="to-do">
+  <h4>To Do</h4>
+  <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
+    {% for card in new %}
+    <div class='card' status="{{ card.status }}" boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true'
+      ondragstart='drag(event)'>
+      <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+      <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+        <button id="{{ card.id }}" class='submit_content'>Save</button>
+        <a id="delete{{ card.id }}" class='delete_card'><i class='w3-margin-right fa fa-trash fa-2x pull-right'></i></a>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class=column id="in_progress">
+  <h4>In progress</h4>
+  <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
+    {% for card in in_progress %}
+    <div class='card' status="{{ card.status }}" boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true'
+      ondragstart='drag(event)'>
+      <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+      <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+        <button id="{{ card.id }}" class='submit_content'>Save</button>
+        <a id="delete{{ card.id }}" class='delete_card'><i class='w3-margin-right fa fa-trash fa-2x pull-right'></i></a>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class=column id="done">
+  <h4>Done</h4>
+  <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
+    {% for card in done %}
+    <div class='card' status="{{ card.status }}" boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true'
+      ondragstart='drag(event)'>
+      <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+      <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+        <button id="{{ card.id }}" class='submit_content'>Save</button>
+        <a id="delete{{ card.id }}" class='delete_card'><i class='w3-margin-right fa fa-trash fa-2x pull-right'></i></a>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class=column id="review">
+  <h4>Review</h4>
+  <div class=clmn-content ondrop="drop(event)" ondragover="allowDrop(event)">
+    {% for card in review %}
+    <div class='card' status="{{ card.status }}" boardid="{{ card.assigned_board_id }}" id="card{{ card.id }}" draggable='true'
+      ondragstart='drag(event)'>
+      <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
+      <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
+        <button id="{{ card.id }}" class='submit_content'>Save</button>
+        <a id="delete{{ card.id }}" class='delete_card'><i class='w3-margin-right fa fa-trash fa-2x pull-right'></i></a>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{%- endmacro %} {% macro render_indicators(first, second, third) -%}
+<li data-target="#myCarousel" data-slide-to="0" class="{{ first }}"></li>
+<li data-target="#myCarousel" data-slide-to="1" class="{{ second }}"></li>
+<li data-target="#myCarousel" data-slide-to="2" class="{{ third }}"></li>
+{%- endmacro %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,11 +86,13 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Carousel template -->
-  <link href="static/carousel.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='carousel.css') }}" rel="stylesheet">
   <!--need to convert this ref to static asap-->
-  <script type="text/javascript" src="../static/main.js"></script>
-  <script type="text/javascript" src="../static/boards.js"></script>
-  <script type="text/javascript" src="../static/add.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='boards.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -41,11 +110,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{ url_for('display_homepage') }}">ProMan</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
+            <a class="navbar-brand" href="{{ url_for('display_homepage') }}"><span class="fa fa-home fa-fw"></span>Home</a>
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Add new board</a></li>
+              <li><a href="#" onclick="addNewCard('#to-do')">Add new card</a></li>
             </ul>
           </div>
         </div>
@@ -61,32 +130,30 @@
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <!-- FROM -->
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+      {{ render_indicators(board[0], board[1], board[2]) }}
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="item active">
         <div class="container">
-          <div class="carousel-caption">
+          <div id="board1" class="carousel-caption">
             <h1>Board 1</h1>
-            {% block columns %} {% endblock %}
+            {{ render_board(new1, in_progress1, done1, review1) }}
           </div>
         </div>
       </div>
       <div class="item">
         <div class="container">
-          <div class="carousel-caption">
+          <div id="board2" class="carousel-caption">
             <h1>Board 2</h1>
-            {{ self.columns() }}
+            {{ render_board(new2, in_progress2, done2, review2) }}
           </div>
         </div>
       </div>
       <div class="item">
         <div class="container">
-          <div class="carousel-caption">
+          <div id="board3" class="carousel-caption">
             <h1>Board 3</h1>
-            {{ self.columns() }}
+            {{ render_board(new3, in_progress3, done3, review3) }}
           </div>
         </div>
       </div>
@@ -109,7 +176,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
-    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+                                       window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
   </script>
 </body>
 

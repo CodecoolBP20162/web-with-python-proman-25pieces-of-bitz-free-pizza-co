@@ -19,10 +19,10 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Carousel template -->
-  <link href="static/carousel.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='carousel.css') }}" rel="stylesheet">
   <!--need to convert this ref to static asap-->
-  <script type="text/javascript" src="../static/main.js"></script>
-  <script type="text/javascript" src="../static/boards.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='boards.js') }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -35,16 +35,16 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
               aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">ProMan</a>
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+            <a class="navbar-brand" href="#">ProMan</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Add new board</a></li>
+              <li class="add_new_board"><a href="#">Add new board</a></li>
             </ul>
           </div>
         </div>
@@ -53,27 +53,21 @@
     </div>
   </div>
   <div class="boardlist">
-    <h1>My boards</h1>
-    <div class="board">
-      <a href="/detailed_view">
-        <p>Board 1</p>
-      </a>
+    <div>
+      <h1>My boards</h1>
     </div>
+    {% for board in board_names_from_db %}
     <div class="board">
-      <a href="/detailed_view">
-        <p>Board 2</p>
-      </a>
+      <p class="board-name" contenteditable="true" id='{{ board.id }}'>{{ board.board_name }}</p>
+      <button id="{{ board.id }}" class='submit_content_board'>Save</button>
+      <a class="get_in_board" href="{{ url_for('detailed_view', board_id=board.id) }}"><i class='fa fa-sign-in fa-lg'></i></a>
     </div>
-    <div class="board">
-      <a href="/detailed_view">
-        <p>Board 3</p>
-      </a>
-    </div>
-  </div>
+    {% endfor %}
+    <!--boards come here-->
   </div>
 
   <!-- Bootstrap core JavaScript
-    ================================================== -->
+   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>

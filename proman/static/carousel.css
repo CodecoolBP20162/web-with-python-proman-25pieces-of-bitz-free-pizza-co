@@ -42,6 +42,7 @@
 #myCarousel {
     padding-top: 20px;
 }
+
 .carousel {
     height: 100% !important;
     background-color: #CFCFCF;
@@ -50,7 +51,6 @@
 /* Declare heights because of positioning of img element */
 .carousel .item {
     height: auto;
-    background-color: #CFCFCF
 }
 
 .carousel-indicators {
@@ -95,28 +95,28 @@
         padding-left: 15px;
     }
 
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    border-radius: 4px;
-  }
+    /* The navbar becomes detached from the top, so we round the corners */
+    .navbar-wrapper .navbar {
+        border-radius: 4px;
+    }
 
-  .carousel-inner .container {
-      margin: 0 auto;
-  }
+    .carousel-inner .container {
+        margin: 0 auto;
+    }
 
-  .carousel-caption {
-    padding: 20px;
-    right: 12%;
-    left: 4%;
-    display: inline-block;
-    margin: 0 auto;
-    position: relative;
-  }
+    .carousel-caption {
+        padding: 20px;
+        right: 12%;
+        left: 4%;
+        display: inline-block;
+        margin: 0 auto;
+        position: relative;
+    }
 
-  .carousel-caption h1 {
-    margin-top: 50px;
-    color: black;
-  }
+    .carousel-caption h1 {
+        margin-top: 50px;
+        color: black;
+    }
 
     /* The navbar becomes detached from the top, so we round the corners */
     .navbar-wrapper .navbar {
@@ -125,43 +125,45 @@
 }
 
 #to-do {
-  background-color: #F23636;
-  opacity: 0.5;
+    background-color: #F23636;
+    opacity: 0.5;
 }
 
-#in-progress {
-  background-color: #8297F8;
-  opacity: 0.5;
+#in_progress {
+    background-color: #8297F8;
+    opacity: 0.5;
 }
 
 #done {
-  background-color: #FFF471;
-  opacity: 0.5;
+    background-color: #FFF471;
+    opacity: 0.5;
 }
 
 #review {
-  background-color: #8DFF71;
-  opacity: 0.5;
+    background-color: #8DFF71;
+    opacity: 0.5;
 }
 
 .column {
-  max-height: 600px;
-  width: 250px;
-  display: inline-table;
-  overflow: scroll;
-  padding-bottom: 10px;
+    max-height: 600px;
+    width: 250px;
+    display: inline-table;
+    overflow: scroll;
+    padding-bottom: 10px;
 }
+
 .column .movable-header {
-  height: 40px;
-  width: 100px;
-  display: inline-block;
-  padding-bottom: 20px;
+    height: 40px;
+    width: 100px;
+    display: inline-block;
+    padding-bottom: 20px;
 }
+
 .column .clmn-content {
-  height: 505px;
-  width: 240px;
-  display: inline-table;
-  padding-top: 10px;
+    height: 505px;
+    width: 240px;
+    display: inline-table;
+    padding-top: 10px;
 }
 
 .card {
@@ -173,6 +175,7 @@
     display: inline-block;
     border-radius: 5%;
 }
+
 .card button {
     color: black;
 
@@ -195,6 +198,20 @@
     width: 100%;
     height: 25px;
 }
+
+.submit_content {
+    display: none;
+}
+
+.submit_content_board {
+    color: black;
+    display: none;
+}
+
+.get_in_board {
+    display: inline-block;
+}
+
 /*boardlist*/
 .boardlist {
     position: absolute;
@@ -205,29 +222,54 @@
     display: inline-block;
     padding-bottom: 20px;
 }
+
 .board {
-    display: inline-block;
-    background: #1C1C1C;
-    margin: 20px;
-    height: 25%;
-    width: 25%;
-    font-size: 2em;
-    color: black;
-    border-radius: 15px;
-    text-align: center;
-    overflow: hidden;
+   display: inline-block;
+   background: #1C1C1C ;
+   margin: 20px;
+   height: 50%;
+   width: 30%;
+   font-size: 2em;
+   color: white;
+   border-radius: 15px;
+   text-align: center;
+   overflow: hidden;
+   opacity: 0.7;
 }
-.board p {
+
+.board .board-name {
     margin: 20px;
 }
+
 .boardlist h1 {
     text-align: center;
+    font-family: "Arial";
 }
+
 a {
     color: white;
+    text-decoration: none;
 }
 
 body {
     background-color: #CFCFCF;
+    background-image: url("http://2.bp.blogspot.com/-xmjmQzG1SE8/VC2L9UZNYbI/AAAAAAAAikU/QGO0KFnjANk/s1600/Abstract%2BTriangles%2BWallpapers%2B2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
+.add_new_card {
+    background-color: #292929;
+    padding: 5px;
+    min-width: 80px;
+    width: 180px;
+    margin-bottom: 5px;
+    display: inline-block;
+    border-radius: 5%;
+}
+
+.delete_card {
+    display: None;
+}
+
 /*boardlist end*/
