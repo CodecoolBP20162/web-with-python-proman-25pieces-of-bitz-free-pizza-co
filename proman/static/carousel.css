@@ -203,8 +203,13 @@
     display: none;
 }
 
-.submit_content_board{
+.submit_content_board {
     color: black;
+    display: none;
+}
+
+.get_in_board {
+    display: inline-block;
 }
 
 /*boardlist*/
@@ -222,7 +227,7 @@
    display: inline-block;
    background: #1C1C1C ;
    margin: 20px;
-   height: 40%;
+   height: 50%;
    width: 30%;
    font-size: 2em;
    color: white;
@@ -238,7 +243,7 @@
 
 .boardlist h1 {
     text-align: center;
-    font-family: "DejaVu Serif";
+    font-family: "Arial";
 }
 
 a {
@@ -265,4 +270,5 @@ body {
 .delete_card {
     display: None;
 }
+
 /*boardlist end*/
