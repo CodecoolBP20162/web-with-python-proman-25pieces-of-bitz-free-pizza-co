@@ -1,4 +1,4 @@
- {% extends "index.html" %} {% block columns %}
+{% extends "index.html" %} {% block columns %}
 <div class=column id="to-do">
     <div class=movable-header id="hdr">
         <h4>To Do</h4>
@@ -24,8 +24,7 @@
         <div class='card' id="card{{ card.id }}" draggable='true' ondragstart='drag(event)'>
             <header><input id="cardTitle{{ card.id }}" class='card_title' {% if card.title %} value="{{ card.title }} {% else %} placeholder='Card Title' {% endif %}"></header><br>
             <article class='card_text'><textarea id="cardContent{{ card.id }}" class='card_content' placeholder='Card Content'>{% if card.title %}{{ card.content }}{% endif %}</textarea>
-                <button
-                    id="{{ card.id }}" class='submit_content'>Save</button>
+                <button id="{{ card.id }}" class='submit_content'>Save</button>
             </article>
         </div>
         {% endfor %}
