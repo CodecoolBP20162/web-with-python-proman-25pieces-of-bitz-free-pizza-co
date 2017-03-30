@@ -16,10 +16,9 @@ $(document).ready(function () {
     $(".submit_content_board").click(function (event) {
         var button = $(event.target);
         var board_id = $(button).attr("id");
-        var new_name = $(button).parent().find("p").val();
-        console.log(board_name, board_id);
+        var new_name = $(button).parent().find("p").html();
         $.ajax({
-            url: "/update/" + board_id + "/" + new_name, success: function (data) {
+            url: "/update_board/" + board_id + "/" + new_name, success: function (data) {
                 console.log(data);
             }
         });
